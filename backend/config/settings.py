@@ -178,3 +178,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://alexis-backend.onrender.com", # Tu propio backend
     "https://mi-protafolio-liard.vercel.app",  # Puerto estándar de React/Vite
 ]
+
+# ... (tu código de CORS)
+
+# FORZANDO UN NUEVO DESPLIEGUE PARA CLOUDINARY
