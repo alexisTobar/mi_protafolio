@@ -1,0 +1,72 @@
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 80vh;
+    /* Ocupa el 80% de la altura de la pantalla */
+    padding: 0 20px;
+    /* Animación de aparición */
+    animation: fadeIn 1s ease-out;
+}
+
+.heroContent {
+    max-width: 800px;
+}
+
+.heroTitle {
+    font-size: 4rem;
+    /* Texto gigante */
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.heroName {
+    /* ¡El efecto llamativo! Un gradiente en el texto */
+    background: linear-gradient(90deg, #007BFF, #00C6FF);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.heroSubtitle {
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    color: #c0c0c0;
+    /* Un gris claro */
+}
+
+.heroDescription {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: #aaa;
+}
+
+.heroButton {
+    background: #007BFF;
+    color: #fff;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.heroButton:hover {
+    background: #0056b3;
+    transform: translateY(-3px);
+}
+
+/* Animación de aparición */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

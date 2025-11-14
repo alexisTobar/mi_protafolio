@@ -1,0 +1,61 @@
+.navbar {
+    /* Un fondo oscuro un poco más claro que el body */
+    background: #1a1a1a;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navContainer {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    z-index: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.navLogo {
+    color: #f4f7f6;
+    /* Texto claro */
+    cursor: pointer;
+    font-size: 1.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+
+.navMenu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    text-align: center;
+}
+
+.navItem {
+    height: 80px;
+}
+
+.navLink {
+    color: #c0c0c0;
+    /* Gris claro */
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+    height: 100%;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.navLink:hover {
+    color: #00C6FF;
+    /* Un azul neón más llamativo */
+}

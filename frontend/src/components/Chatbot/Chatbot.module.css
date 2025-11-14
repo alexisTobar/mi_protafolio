@@ -1,0 +1,107 @@
+/* Chatbot.module.css */
+.chatContainer {
+    position: fixed;
+    /* Fijo en la pantalla */
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    /* Siempre encima de todo */
+}
+
+.chatButton {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    /* Círculo perfecto */
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+}
+
+.chatButton:hover {
+    transform: scale(1.1);
+}
+
+.chatWindow {
+    width: 350px;
+    height: 450px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    /* Para que todo quede dentro */
+    position: absolute;
+    bottom: 80px;
+    /* Encima del botón */
+    right: 0;
+}
+
+.chatHeader {
+    background-color: #007BFF;
+    color: white;
+    padding: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.chatMessages {
+    flex-grow: 1;
+    /* Ocupa todo el espacio */
+    padding: 15px;
+    overflow-y: auto;
+    /* Scroll si hay muchos mensajes */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message {
+    padding: 10px 15px;
+    border-radius: 15px;
+    max-width: 80%;
+    line-height: 1.4;
+}
+
+.user {
+    background-color: #EFEFEF;
+    color: #333;
+    align-self: flex-end;
+    /* A la derecha */
+}
+
+.bot {
+    background-color: #007BFF;
+    color: white;
+    align-self: flex-start;
+    /* A la izquierda */
+}
+
+.chatInputArea {
+    display: flex;
+    border-top: 1px solid #EFEFEF;
+    padding: 10px;
+}
+
+.chatInput {
+    flex-grow: 1;
+    border: 1px solid #DDD;
+    border-radius: 20px;
+    padding: 10px 15px;
+    margin-right: 10px;
+}
+
+.sendButton {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 0 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
