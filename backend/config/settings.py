@@ -164,5 +164,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # para hablar con nuestra API
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Puerto estándar de React/Vite
-    "http://localhost:5174",  # Puerto estándar de React/Vite
+    "http://localhost:5174",
+    "https://alexis-backend.onrender.com", # Tu propio backend
+    "https://mi-protafolio-liard.vercel.app",  # Puerto estándar de React/Vite
 ]
