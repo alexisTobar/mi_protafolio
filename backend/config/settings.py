@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     # Apps de Terceros (las que instalamos)
     'rest_framework',
     'corsheaders',
-    
+    'cloudinary_storage',
+    'cloudinary',
     # Mis Apps (las que creamos)
     'proyectos',
     'chatbot',
@@ -157,7 +158,16 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# --- CONFIGURACIÓN DE CLOUDINARY ---
+# (Lee las claves desde las Variables de Entorno de Render)
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET')
+}
 
+# Le dice a Django que use Cloudinary para TODOS los archivos multimedia
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # Al final del archivo settings.py
 
 # Lista de orígenes (dominios) que tienen permiso
