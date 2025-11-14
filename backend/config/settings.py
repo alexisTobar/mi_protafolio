@@ -28,8 +28,11 @@ SECRET_KEY = 'django-insecure-fne3vv$#s327_7dq(p@77bg2k3pl6ty1&1d_8#sf#1z*&i@5ni
 # La '1' significa True. En Render, esta variable no existirá, así que será False.
 DEBUG = os.environ.get('DEBUG', '1') == '1'
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-
+ALLOWED_HOSTS = [
+    'localhost', 
+    '127.0.0.1',
+    'alexis-backend.onrender.com'  # <-- ¡AGREGA ESTA LÍNEA!
+]
 
 # Application definition
 
