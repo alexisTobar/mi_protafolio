@@ -4,7 +4,7 @@ import axios from 'axios';
 import styles from './Chatbot.module.css';
 
 // La URL de la API del cerebro que creamos
-const CHATBOT_API_URL = 'http://127.0.0.1:8000/api/v1/chatbot/';
+const CHATBOT_API_URL = 'https://alexis-backend.onrender.com/api/v1/chatbot/';
 
 function Chatbot() {
     // 1. Estados (la "memoria" del componente)

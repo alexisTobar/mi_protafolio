@@ -10,7 +10,7 @@ import Footer from './components/Footer/Footer.jsx';
 
 import styles from './App.module.css';
 
-const API_URL = 'http://127.0.0.1:8000/api/v1/proyectos/';
+const API_URL = 'https://alexis-backend.onrender.com/api/v1/proyectos/';
 
 function App() {
   const [proyectos, setProyectos] = useState([]);
