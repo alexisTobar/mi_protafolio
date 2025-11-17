@@ -1,4 +1,4 @@
-/* Hero.module.css (v3 - Con Imagen de IA) */
+/* Hero.module.css (v4 - Híbrido) */
 .hero {
     display: flex;
     align-items: center;
@@ -9,34 +9,47 @@
     background-color: #121212;
 }
 
-/* El contenedor principal (Desktop) */
 .heroGrid {
     display: grid;
-    /* (Columnas: Izquierda, Centro, Derecha) */
+    /* (Columnas: Izquierda (Texto), Centro (Imagen), Derecha (Texto)) */
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     gap: 20px;
-    max-width: 1200px;
+    max-width: 1300px;
+    /* Un poco más ancho */
     width: 100%;
 }
 
-/* --- Columna Izquierda ("Developer") --- */
+/* --- Columna Izquierda (Tu Perfil) --- */
 .heroColumnLeft {
     text-align: right;
     animation: slideInLeft 1s ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    /* Alinea todo a la derecha */
 }
 
-/* --- Columna Derecha ("<Coder>") --- */
+/* --- Columna Derecha (Tu Bio) --- */
 .heroColumnRight {
     text-align: left;
     animation: slideInRight 1s ease-out;
 }
 
 .heroTitle {
-    font-size: 4rem;
+    font-size: 3.5rem;
+    /* Un poco más pequeño para que quepa el nombre */
     font-weight: 700;
     margin-bottom: 0.5rem;
     color: #f4f7f6;
+}
+
+/* ¡Estilo para tu nombre (el gradiente)! */
+.name {
+    background: linear-gradient(90deg, #007BFF, #00C6FF);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .heroSubtitle {
@@ -45,44 +58,69 @@
     line-height: 1.6;
     max-width: 350px;
     display: inline-block;
+    margin-bottom: 1.5rem;
 }
+
+/* ¡Estilo para el botón de CV! */
+.cvButton {
+    background: #007BFF;
+    color: #fff;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    margin-top: 20px;
+    /* Espacio */
+}
+
+.cvButton:hover {
+    background: #0056b3;
+    transform: translateY(-3px);
+}
+
 
 /* --- El Elemento Central (La Imagen IA) --- */
 .heroImageContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Animación de aparición */
     animation: fadeIn 1.5s ease-out;
 }
 
 .heroImage {
     width: 100%;
     max-width: 400px;
-    /* Tamaño máximo de la imagen */
     height: auto;
     border-radius: 10px;
-    /* Bordes redondeados */
     box-shadow: 0 10px 30px rgba(0, 198, 255, 0.1);
-    /* Sombra azulada */
 }
 
 
 /* --- Media Query (Móvil) --- */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 960px) {
+
+    /* Cambiado a 960px */
     .hero {
         min-height: 80vh;
     }
 
-    /* Se vuelve de 1 sola columna */
     .heroGrid {
         grid-template-columns: 1fr;
     }
 
-    /* El texto se centra */
     .heroColumnLeft,
     .heroColumnRight {
         text-align: center;
+    }
+
+    .heroColumnLeft {
+        align-items: center;
+        /* Centra el botón de CV en móvil */
     }
 
     .heroSubtitle {
@@ -92,14 +130,10 @@
 
     .heroTitle {
         font-size: 2.5rem;
-        /* Más pequeño en móvil */
     }
 
-    /* Mostramos la imagen en el medio */
     .heroImageContainer {
-        /* (Mete la columna visual entre las dos de texto) */
         order: -1;
-        /* Lo pone arriba de la col izq */
         margin-bottom: 2rem;
     }
 
@@ -113,7 +147,7 @@
 }
 
 
-/* --- Animaciones Keyframes --- */
+/* --- Animaciones Keyframes (Sin cambios) --- */
 @keyframes fadeIn {
     from {
         opacity: 0;
