@@ -11,3 +11,9 @@ python3 manage.py collectstatic --no-input
 
 # 3. Aplica las migraciones de la base de datos
 python3 manage.py migrate
+
+# --- ¡LÍNEA NUEVA! ---
+# Le dice a Django: "Crea el superusuario usando las variables de entorno"
+# El '--no-input' es clave.
+# El '|| echo ...' es un truco para que no falle si el usuario ya existe.
+python3 manage.py createsuperuser --no-input || echo "El Superusuario ya existe."
