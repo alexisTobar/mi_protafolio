@@ -1,79 +1,70 @@
-// Hero.jsx (v4 - Híbrido)
+// Hero.jsx (v5 - Diseño de 2 Columnas)
 import React from 'react';
-import styles from './Hero.module.css'; // <-- Importa los estilos
+import styles from './Hero.module.css';
 
 function Hero({ perfil }) {
 
-    // --- Función de Descarga (¡Corregida!) ---
+    // --- Función de Descarga (Corregida) ---
     const handleDownload = async () => {
-        // 1. Revisa el campo 'cv_url'
         if (!perfil || !perfil.cv_url) return;
-
-        // 2. Usa la URL completa 'cv_url'
         const fileUrl = perfil.cv_url;
-        console.log("Intentando descargar:", fileUrl);
 
         try {
-            // (Mejora: modo 'cors' por si el link es de Google Drive)
             const response = await fetch(fileUrl, { mode: 'cors' });
             const blob = await response.blob();
             const url = window.URL.createObjectURL(blob);
             const link = document.createElement('a');
             link.href = url;
-
-            // Nombre de archivo genérico
             link.setAttribute('download', 'CV-AlexisTobar.pdf');
-
             document.body.appendChild(link);
             link.click();
             link.parentNode.removeChild(link);
             window.URL.revokeObjectURL(url);
-
         } catch (error) {
             console.error("Error al descargar el CV:", error);
-            // Plan B: Si el 'fetch' falla, solo abre el link en una pestaña nueva.
             window.open(fileUrl, '_blank');
         }
     };
     // --- FIN DE LA FUNCIÓN ---
 
-    // Estado de Carga: Si el perfil no ha llegado, muestra un 'placeholder'
+    // Estado de Carga
     if (!perfil) {
         return (
             <div className={styles.hero}>
                 <div className={styles.heroGrid}>
-                    <div className={styles.heroColumnLeft}>
+                    <div className={styles.heroColumnText}>
                         <h1 className={styles.heroTitle}>Cargando...</h1>
-                    </div>
-                    <div className={styles.heroImageContainer}></div>
-                    <div className={styles.heroColumnRight}>
-                        <h1 className={styles.heroTitle}>&lt;...&gt;</h1>
                     </div>
                 </div>
             </div>
         );
     }
 
-    // ¡Estado Cargado! Dibuja el Hero con tus datos.
+    // ¡Estado Cargado!
     return (
         <div className={styles.hero}>
             <div className={styles.heroGrid}>
 
-                {/* --- Columna Izquierda (¡DINÁMICA!) --- */}
-                <div className={styles.heroColumnLeft}>
+                {/* --- Columna Izquierda (Todo el Texto) --- */}
+                <div className={styles.heroColumnText}>
 
-                    {/* ¡Aplica el estilo de título! */}
+                    {/* Tu Nombre */}
                     <h1 className={styles.heroTitle}>
-                        {/* ¡Aplica el estilo de gradiente! */}
                         <span className={styles.name}>{perfil.nombre_completo}</span>
                     </h1>
 
-                    {/* ¡Aplica el estilo de subtítulo! */}
+                    {/* Tu Bio Corta */}
                     <p className={styles.heroSubtitle}>
                         {perfil.bio_corta}
                     </p>
 
-                    {/* ¡Aplica el estilo de botón! */}
+                    {/* Tu Bio Larga */}
+                    <h2 className={styles.descriptionTitle}>&lt;Sobre Mí&gt;</h2>
+                    <p className={styles.description}>
+                        {perfil.bio_larga}
+                    </p>
+
+                    {/* El Botón de CV (solo si existe) */}
                     {perfil.cv_url && (
                         <button
                             onClick={handleDownload}
@@ -84,25 +75,13 @@ function Hero({ perfil }) {
                     )}
                 </div>
 
-                {/* --- Elemento Visual Central (Imagen IA) --- */}
+                {/* --- Columna Derecha (Imagen IA) --- */}
                 <div className={styles.heroImageContainer}>
                     <img
                         src="https://i.postimg.cc/mr5XLFGh/Gemini-Generated-Image-j3gc9gj3gc9gj3gc.png"
                         alt="Arte de Programación IA"
                         className={styles.heroImage}
                     />
-                </div>
-
-                {/* --- Columna Derecha (¡DINÁMICA!) --- */}
-                <div className={styles.heroColumnRight}>
-
-                    {/* ¡Aplica el estilo de título! */}
-                    <h1 className={styles.heroTitle}>&lt;Sobre Mí&gt;</h1>
-
-                    {/* ¡Aplica el estilo de subtítulo! */}
-                    <p className={styles.heroSubtitle}>
-                        {perfil.bio_larga}
-                    </p>
                 </div>
 
             </div>

@@ -1,4 +1,4 @@
-/* Hero.module.css (v4.1 - Arreglo de Alineación) */
+/* Hero.module.css (v5 - Diseño de 2 Columnas) */
 .hero {
     display: flex;
     align-items: center;
@@ -11,38 +11,23 @@
 
 .heroGrid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-
-    /* --- ¡AQUÍ ESTÁ LA CORRECCIÓN! --- */
-    /* 'start' alinea los 3 items (columnas) a la parte SUPERIOR de la fila. */
-    /* 'center' (el valor anterior) los alineaba al medio, causando el desorden. */
-    align-items: start;
-
-    gap: 20px;
-    max-width: 1300px;
+    /* --- ¡EL GRAN CAMBIO! --- */
+    /* Dos columnas: 55% para el texto, 45% para la imagen */
+    grid-template-columns: 55% 45%;
+    align-items: center;
+    /* Centrado vertical */
+    gap: 40px;
+    max-width: 1200px;
     width: 100%;
 }
 
-/* --- Columna Izquierda (Tu Perfil) --- */
-.heroColumnLeft {
-    text-align: right;
+/* --- Columna Izquierda (Todo el Texto) --- */
+.heroColumnText {
     animation: slideInLeft 1s ease-out;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    /* Alinea el contenido (texto/botón) a la derecha */
-}
-
-/* --- Columna Derecha (Tu Bio) --- */
-.heroColumnRight {
-    text-align: left;
-    animation: slideInRight 1s ease-out;
-    display: flex;
-    /* Añadido para consistencia */
-    flex-direction: column;
-    /* Añadido para consistencia */
     align-items: flex-start;
-    /* Añadido para consistencia */
+    /* Alinea todo a la izquierda */
 }
 
 .heroTitle {
@@ -52,7 +37,6 @@
     color: #f4f7f6;
 }
 
-/* ¡Estilo para tu nombre (el gradiente)! */
 .name {
     background: linear-gradient(90deg, #007BFF, #00C6FF);
     background-clip: text;
@@ -61,15 +45,27 @@
 }
 
 .heroSubtitle {
-    font-size: 1.1rem;
-    color: #aaa;
-    line-height: 1.6;
-    max-width: 350px;
-    display: inline-block;
+    font-size: 1.3rem;
+    /* Un poco más grande */
+    color: #c0c0c0;
     margin-bottom: 1.5rem;
 }
 
-/* ¡Estilo para el botón de CV! */
+.descriptionTitle {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    /* Espacio antes de "Sobre Mí" */
+    margin-bottom: 1rem;
+    color: #f4f7f6;
+}
+
+.description {
+    font-size: 1rem;
+    color: #aaa;
+    line-height: 1.7;
+}
+
 .cvButton {
     background: #007BFF;
     color: #fff;
@@ -82,7 +78,7 @@
     border: none;
     cursor: pointer;
     font-family: inherit;
-    margin-top: 20px;
+    margin-top: 30px;
     /* Espacio */
 }
 
@@ -92,18 +88,18 @@
 }
 
 
-/* --- El Elemento Central (La Imagen IA) --- */
+/* --- Columna Derecha (La Imagen IA) --- */
 .heroImageContainer {
     display: flex;
     justify-content: center;
-    align-items: start;
-    /* Alineado arriba también */
+    align-items: center;
     animation: fadeIn 1.5s ease-out;
 }
 
 .heroImage {
     width: 100%;
-    max-width: 400px;
+    max-width: 450px;
+    /* Un poco más grande */
     height: auto;
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0, 198, 255, 0.1);
@@ -111,47 +107,35 @@
 
 
 /* --- Media Query (Móvil) --- */
-@media screen and (max-width: 960px) {
+/* Cuando la pantalla sea más PEQUEÑA de 768px... */
+@media screen and (max-width: 768px) {
     .hero {
         min-height: 80vh;
     }
 
+    /* Se vuelve de 1 sola columna */
     .heroGrid {
         grid-template-columns: 1fr;
-        align-items: start;
-        /* Mantenemos la alineación superior */
     }
 
-    .heroColumnLeft,
-    .heroColumnRight {
-        text-align: center;
-    }
-
-    .heroColumnLeft {
+    /* El texto se centra */
+    .heroColumnText {
         align-items: center;
-        /* Centra el botón de CV en móvil */
-    }
-
-    .heroSubtitle {
-        margin-left: auto;
-        margin-right: auto;
+        text-align: center;
     }
 
     .heroTitle {
         font-size: 2.5rem;
     }
 
+    /* La imagen se pone arriba */
     .heroImageContainer {
         order: -1;
         margin-bottom: 2rem;
     }
 
-    .heroColumnLeft {
+    .heroColumnText {
         order: 0;
-    }
-
-    .heroColumnRight {
-        order: 1;
     }
 }
 
