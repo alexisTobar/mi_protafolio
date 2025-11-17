@@ -1,4 +1,4 @@
-/* Hero.module.css (v4 - Híbrido) */
+/* Hero.module.css (v4.1 - Arreglo de Alineación) */
 .hero {
     display: flex;
     align-items: center;
@@ -11,12 +11,15 @@
 
 .heroGrid {
     display: grid;
-    /* (Columnas: Izquierda (Texto), Centro (Imagen), Derecha (Texto)) */
     grid-template-columns: 1fr 1fr 1fr;
-    align-items: center;
+
+    /* --- ¡AQUÍ ESTÁ LA CORRECCIÓN! --- */
+    /* 'start' alinea los 3 items (columnas) a la parte SUPERIOR de la fila. */
+    /* 'center' (el valor anterior) los alineaba al medio, causando el desorden. */
+    align-items: start;
+
     gap: 20px;
     max-width: 1300px;
-    /* Un poco más ancho */
     width: 100%;
 }
 
@@ -27,18 +30,23 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    /* Alinea todo a la derecha */
+    /* Alinea el contenido (texto/botón) a la derecha */
 }
 
 /* --- Columna Derecha (Tu Bio) --- */
 .heroColumnRight {
     text-align: left;
     animation: slideInRight 1s ease-out;
+    display: flex;
+    /* Añadido para consistencia */
+    flex-direction: column;
+    /* Añadido para consistencia */
+    align-items: flex-start;
+    /* Añadido para consistencia */
 }
 
 .heroTitle {
     font-size: 3.5rem;
-    /* Un poco más pequeño para que quepa el nombre */
     font-weight: 700;
     margin-bottom: 0.5rem;
     color: #f4f7f6;
@@ -88,7 +96,8 @@
 .heroImageContainer {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
+    /* Alineado arriba también */
     animation: fadeIn 1.5s ease-out;
 }
 
@@ -103,14 +112,14 @@
 
 /* --- Media Query (Móvil) --- */
 @media screen and (max-width: 960px) {
-
-    /* Cambiado a 960px */
     .hero {
         min-height: 80vh;
     }
 
     .heroGrid {
         grid-template-columns: 1fr;
+        align-items: start;
+        /* Mantenemos la alineación superior */
     }
 
     .heroColumnLeft,
