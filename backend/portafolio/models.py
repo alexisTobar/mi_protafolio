@@ -89,7 +89,8 @@ class Perfil(models.Model):
     # 'upload_to='cv/'' -> Django guardará el archivo en una carpeta 'cv'.
     # NOTA: Para que esto funcione en producción, también usaremos un truco.
     # Por ahora, lo dejamos así para el desarrollo local.
-    cv = models.FileField(upload_to='cv/', blank=True, null=True)
+    # Guardamos la URL pública de tu CV (ej: un link de Google Drive)
+    cv_url = models.URLField(max_length=500, blank=True, null=True)
     
     def __str__(self):
         return self.nombre_completo
