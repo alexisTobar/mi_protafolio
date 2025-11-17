@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
-import os  # <-- AGREGA ESTO
-import dj_database_url # <-- AGREGA ESTO
+import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,49 +22,51 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-fne3vv$#s327_7dq(p@77bg2k3pl6ty1&1d_8#sf#1z*&i@5ni'
+SECRET_KEY = 'django-insecure--hm!#lk*69ew)o!#*7b+zc*ax!_genyqr_^i5k-5g5rfm-k*zs'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-# La '1' significa True. En Render, esta variable no existirá, así que será False.
+# Lee una variable de Render. Si no existe ('1'), usa True (para tu PC)
 DEBUG = os.environ.get('DEBUG', '1') == '1'
 
+# Le decimos en qué dominios confiamos
 ALLOWED_HOSTS = [
-    'localhost', 
+    'localhost',
     '127.0.0.1',
-    'alexis-backend.onrender.com'  # <-- ¡AGREGA ESTA LÍNEA!
+    'alexis-backend.onrender.com',       # Tu backend en Render
+    'mi-protafolio-liard.vercel.app',  # Tu frontend en Vercel
 ]
+
 
 # Application definition
 
 INSTALLED_APPS = [
+    # Apps de Django (ya existen)
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'whitenoise.runserver_nostatic',
+
     # Apps de Terceros (las que instalamos)
-    'rest_framework',
-    'corsheaders',
-    'cloudinary_storage',
-    'cloudinary',
+    'rest_framework',      # <-- Agrega esta (para la API)
+    'corsheaders',         # <-- Agrega esta (para el "guardia de seguridad" CORS)
+
     # Mis Apps (las que creamos)
-    'proyectos',
+    'portafolio.apps.PortafolioConfig', # <-- Agrega esta (tu app)
     'chatbot',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    # Ponemos CORS aquí arriba
-    'corsheaders.middleware.CorsMiddleware', 
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # Ya no hay nada duplicado aquí abajo
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -144,42 +146,32 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
+
 STATIC_URL = 'static/'
-# Configuración de Archivos de Media (Imágenes subidas)
+
+# --- Configuración de Archivos Media (para tu CV) ---
+
+# MEDIA_URL es la dirección web pública para ver los archivos
+# (ej: http://localhost:8000/media/cv/mi_cv.pdf)
 MEDIA_URL = '/media/'
+
+# MEDIA_ROOT es la carpeta FÍSICA donde Django guardará los archivos
+# (creará una carpeta 'media' en 'backend/')
 MEDIA_ROOT = BASE_DIR / 'media'
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
+
 # ... (debajo de MEDIA_ROOT)
 
 # Configuración de archivos estáticos (para Whitenoise y Admin)
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# Default primary key field type
+# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# --- CONFIGURACIÓN DE CLOUDINARY ---
-# (Lee las claves desde las Variables de Entorno de Render)
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
-    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
-    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET')
-}
-
-# Le dice a Django que use Cloudinary para TODOS los archivos multimedia
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-# Al final del archivo settings.py
-
-# Lista de orígenes (dominios) que tienen permiso
-# para hablar con nuestra API
+# Lista de "amigos" (orígenes) que tienen permiso para hablar con tu API
+# 'http://localhost:5173' es la dirección estándar de React (Vite)
+# Lista de "amigos" que pueden hablar con tu API
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",  # Puerto estándar de React/Vite
-    "http://localhost:5174",
-    "https://alexis-backend.onrender.com", # Tu propio backend
-    "https://mi-protafolio-liard.vercel.app",  # Puerto estándar de React/Vite
+    "http://localhost:5173", # Tu React local
+    "https://mi-protafolio-liard.vercel.app", # ¡Tu React en Vercel!
 ]
-
-# ... (tu código de CORS)
-
-# FORZANDO UN NUEVO DESPLIEGUE PARA CLOUDINARY
-# FORZANDO CAMBIO 12345

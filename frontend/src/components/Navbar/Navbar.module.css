@@ -1,26 +1,31 @@
+/* Navbar.module.css */
+/* Fondo oscuro (un poco más claro que el body) */
 .navbar {
-    /* Un fondo oscuro un poco más claro que el body */
     background: #1a1a1a;
     height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.1rem;
+    /* Fijo en la parte superior */
     position: sticky;
     top: 0;
     z-index: 999;
+    /* Asegura que esté sobre todo */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .navContainer {
     display: flex;
     justify-content: space-between;
+    /* Logo a la izq, links/icono a la der */
     height: 80px;
     z-index: 1;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1300px;
+    /* Un poco más ancho para el nuevo look */
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 24px;
 }
 
 .navLogo {
@@ -29,33 +34,156 @@
     cursor: pointer;
     font-size: 1.8rem;
     font-weight: 700;
+    /* Letra gruesa */
     display: flex;
     align-items: center;
+    text-decoration: none;
+    /* Quita el subrayado del link */
 }
 
+/* --- ESTILOS DEL MENÚ --- */
+
+/* El menú de links (versión MÓVIL) */
 .navMenu {
     display: flex;
-    align-items: center;
-    list-style: none;
-    text-align: center;
+    flex-direction: column;
+    /* Apilado vertical */
+    width: 100%;
+    height: calc(100vh - 80px);
+    /* Ocupa toda la pantalla menos el navbar */
+    position: absolute;
+    /* Flota sobre el contenido */
+    top: 80px;
+    /* Se sitúa justo debajo del navbar */
+
+    /* ¡LA MAGIA! Empieza 'left: -100%' (fuera de la pantalla) */
+    left: -100%;
+    opacity: 1;
+    transition: all 0.5s ease;
+    /* Animación de entrada */
+    background: #1a1a1a;
+}
+
+/* El menú cuando está ACTIVO (click en hamburguesa) */
+.navMenu.active {
+    left: 0;
+    /* Se mueve a 'left: 0' (visible) */
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: 1;
 }
 
 .navItem {
-    height: 80px;
+    list-style: none;
+    /* Quita los puntos de la lista */
+    border-bottom: 2px solid #333;
+    /* Separador entre links */
 }
 
 .navLink {
     color: #c0c0c0;
     /* Gris claro */
-    display: flex;
-    align-items: center;
-    padding: 0 1.5rem;
-    height: 100%;
-    cursor: pointer;
+    display: block;
+    width: 100%;
+    padding: 2rem 0;
+    /* Links grandes, fáciles de tocar */
+    text-align: center;
+    text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .navLink:hover {
     color: #00C6FF;
-    /* Un azul neón más llamativo */
+    /* Azul neón */
+}
+
+/* Los iconos de redes sociales (MÓVIL) */
+.socialIconsMenu {
+    display: flex;
+    /* Se muestran en el menú móvil */
+    justify-content: center;
+    padding: 2rem 0;
+    gap: 30px;
+    /* Espacio entre iconos */
+}
+
+.socialIconLink {
+    color: #f4f7f6;
+    font-size: 2rem;
+    transition: color 0.3s ease;
+}
+
+.socialIconLink:hover {
+    color: #00C6FF;
+}
+
+/* El icono de hamburguesa (solo visible en móvil) */
+.menuIcon {
+    display: block;
+    /* Se muestra en móvil */
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-100%, 60%);
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #f4f7f6;
+}
+
+/* --- ESTILOS DE DESKTOP (PC) --- */
+/* Cuando la pantalla sea más grande de 960px... */
+@media screen and (min-width: 960px) {
+
+    /* Ocultamos el icono de hamburguesa */
+    .menuIcon {
+        display: none;
+    }
+
+    /* Mostramos el menú de links horizontal */
+    .navMenu {
+        display: flex;
+        flex-direction: row;
+        /* Horizontal */
+        align-items: center;
+        position: static;
+        /* Ya no flota */
+        height: 80px;
+        width: auto;
+        left: 0;
+    }
+
+    .navItem {
+        height: 80px;
+        border: none;
+        /* Sin separadores */
+    }
+
+    .navLink {
+        padding: 0 1.5rem;
+        /* Espacio horizontal */
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    /* Ocultamos los iconos sociales del menú desplegable */
+    .socialIconsMenu {
+        display: none;
+    }
+}
+
+/* Iconos sociales (solo para Desktop, a la derecha) */
+.socialIconsDesktop {
+    display: none;
+    /* Oculto en móvil */
+}
+
+@media screen and (min-width: 960px) {
+
+    /* Se muestran en Desktop */
+    .socialIconsDesktop {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
 }

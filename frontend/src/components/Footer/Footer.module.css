@@ -1,13 +1,71 @@
+/* Footer.module.css */
 .footer {
-    background-color: #333;
-    /* Fondo oscuro */
-    color: #f4f7f6;
-    /* Texto claro */
-    padding: 30px 20px;
+    background-color: #1a1a1a;
+    /* Mismo color que el navbar */
+    color: #aaa;
+    /* Texto gris claro */
+    padding: 60px 20px;
     text-align: center;
+    border-top: 1px solid #333;
+    /* Borde superior sutil */
+}
+
+.footerTitle {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #f4f7f6;
+    margin-bottom: 20px;
 }
 
 .footerText {
-    margin-bottom: 10px;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+}
+
+.footerEmail {
+    /* Un link grande que parece botón */
+    display: inline-block;
+    background-color: #007BFF;
+    color: #fff;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.footerEmail:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+}
+
+.socialIcons {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    /* Espacio entre iconos */
+}
+
+.socialIconLink {
+    color: #f4f7f6;
+    font-size: 2rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.socialIconLink:hover {
+    color: #00C6FF;
+    /* Azul neón al pasar el mouse */
+    transform: scale(1.1);
+}
+
+.copyright {
+    margin-top: 40px;
     font-size: 0.9rem;
+    color: #777;
 }

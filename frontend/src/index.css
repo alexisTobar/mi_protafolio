@@ -1,16 +1,23 @@
+/* * index.css (Global)
+ * Reseteo de estilos para empezar limpio.
+ */
+
+/* 1. Importamos una fuente moderna (Poppins) desde Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
+/* 2. Reseteo de márgenes y 'box-sizing' */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* El padding no afectará el ancho total */
 }
 
+/* 3. Aplicamos la fuente y un fondo oscuro (Dark Mode) */
 body {
-    font-family: 'Poppins', sans-serif;
-    /* El fondo del modo oscuro */
-    background-color: #121212;
-    /* El color de texto principal */
-    color: #f4f7f6;
-    line-height: 1.6;
+  font-family: 'Poppins', sans-serif;
+  background-color: #121212;
+  /* Fondo modo oscuro */
+  color: #f4f7f6;
+  /* Texto claro */
 }

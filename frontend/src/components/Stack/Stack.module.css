@@ -1,0 +1,71 @@
+/* Stack.module.css */
+.stackContainer {
+    padding: 60px 20px;
+    background-color: #1a1a1a;
+    text-align: center;
+}
+
+.sectionTitle {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+.stackGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.stackItem {
+    background-color: #1e1e1e;
+    color: #f4f7f6;
+    border: 1px solid #333;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.stackItem:hover {
+    background-color: #007BFF;
+    transform: translateY(-5px);
+    color: #fff;
+}
+
+.stackIcon {
+    font-size: 1.5rem;
+    color: #00C6FF;
+}
+
+.stackItem:hover .stackIcon {
+    color: #fff;
+}
+
+/* --- ¡ESTILOS NUEVOS! --- */
+
+/* Contenedor para una sección (ej: todo Frontend) */
+.categorySection {
+    margin-bottom: 40px;
+    /* Espacio entre "Frontend" y "Backend" */
+}
+
+/* Título de la categoría (ej: "Frontend") */
+.categoryTitle {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #00C6FF;
+    /* Azul neón */
+    margin-bottom: 25px;
+    border-bottom: 2px solid #333;
+    display: inline-block;
+    /* Para que el borde no ocupe toda la pantalla */
+    padding-bottom: 5px;
+}

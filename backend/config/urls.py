@@ -1,32 +1,31 @@
 """
 URL configuration for config project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
 from django.urls import path, include
-# --- Importaciones nuevas ---
+
+# --- 1. Importaciones Nuevas ---
+# Importamos 'settings' y 'static' para servir los archivos
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/', include('proyectos.urls')),  # Incluye las URLs de la app 'proyectos'
-    path('api/v1/chatbot/', include('chatbot.urls')),
+
+    # --- AGREGA ESTA LÍNEA ---
+    # Le dice a Django: "Cualquier URL que empiece con 'api/chatbot/',
+    # envíala al archivo 'chatbot/urls.py'".
+    path('api/chatbot/', include('chatbot.urls')),
+
+    # --- 2. AGREGA ESTA LÍNEA ---
+    # Le dice a Django: "Cualquier URL que empiece con 'api/',
+    # envíala a tu archivo 'portafolio/urls.py'".
+    path('api/', include('portafolio.urls')),
 ]
 
-# --- Línea nueva al final ---
-# Esto le dice a Django que sirva los archivos de 'media'
+# --- 2. Línea Nueva para desarrollo ---
+# Esto le dice a Django: "Cuando estemos en modo DEBUG (desarrollo),
+# muestra los archivos que están en MEDIA_ROOT (tu CV)"
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
