@@ -17,7 +17,6 @@ import './App.css'; // (Archivo CSS global, si lo necesitas)
 const API_PERFIL_URL = 'https://alexis-backend.onrender.com/api/perfil/';
 const API_TECNOLOGIAS_URL = 'https://alexis-backend.onrender.com/api/tecnologias/';
 const API_PROYECTOS_URL = 'https://alexis-backend.onrender.com/api/proyectos/';
-
 function App() {
   // --- 3. ESTADOS (sin cambios) ---
   const [perfil, setPerfil] = useState(null);
