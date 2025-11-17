@@ -1,9 +1,6 @@
 // Hero.jsx (v4 - Híbrido)
 import React from 'react';
-import styles from './Hero.module.css';
-
-// ¡Ya no necesitamos la constante 'BACKEND_URL'!
-// Usaremos la URL completa de la API.
+import styles from './Hero.module.css'; // <-- Importa los estilos
 
 function Hero({ perfil }) {
 
@@ -64,16 +61,19 @@ function Hero({ perfil }) {
 
                 {/* --- Columna Izquierda (¡DINÁMICA!) --- */}
                 <div className={styles.heroColumnLeft}>
+
+                    {/* ¡Aplica el estilo de título! */}
                     <h1 className={styles.heroTitle}>
-                        {/* ¡Tu Nombre con Gradiente! */}
+                        {/* ¡Aplica el estilo de gradiente! */}
                         <span className={styles.name}>{perfil.nombre_completo}</span>
                     </h1>
+
+                    {/* ¡Aplica el estilo de subtítulo! */}
                     <p className={styles.heroSubtitle}>
-                        {/* ¡Tu Bío Corta! */}
                         {perfil.bio_corta}
                     </p>
 
-                    {/* ¡El Botón de CV (solo si existe)! */}
+                    {/* ¡Aplica el estilo de botón! */}
                     {perfil.cv_url && (
                         <button
                             onClick={handleDownload}
@@ -95,9 +95,12 @@ function Hero({ perfil }) {
 
                 {/* --- Columna Derecha (¡DINÁMICA!) --- */}
                 <div className={styles.heroColumnRight}>
+
+                    {/* ¡Aplica el estilo de título! */}
                     <h1 className={styles.heroTitle}>&lt;Sobre Mí&gt;</h1>
+
+                    {/* ¡Aplica el estilo de subtítulo! */}
                     <p className={styles.heroSubtitle}>
-                        {/* ¡Tu Bío Larga! */}
                         {perfil.bio_larga}
                     </p>
                 </div>
